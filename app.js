@@ -1,34 +1,3 @@
-/*
-let card = document.querySelectorAll('.card');
-let openCards = [...card];
-let move =0;
-const starts = document.querySelectorAll('.stars li i');
-
-
- /*DISPLAY CARDS ....MATCHING
-const displayCard = (e) => {
-    e.target.classList.toggle('open');
-    e.target.classList.toggle('show');
-    e.target.classList.toggle('disabled');
-
-    if(target.classList.contains('open')){
-     openCards.push(e.target);
-    }
-    if(openCards.length==2){
-        setTimeout(()=>{
-
-         if(openCards[0].children[0].classList.value == openCards[1].children[0].classList.value){
-     console.log(openCards[0].children[0].classList.value);
-     console.log(openCards[1].childNodes[1].classList.value);
-
-        }
-        });
-    }
-}
-openCards.forEach(card => {
-    card.addEventListener("click", displayCard);
-});
-*/
 
 //what i need to change and store
 const deck = document.querySelector(".deck");
