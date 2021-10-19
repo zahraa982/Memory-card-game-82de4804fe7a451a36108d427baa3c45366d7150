@@ -44,12 +44,19 @@ console.log(hearts);
 let match = 0;
 
 deck.addEventListener("click", (event) => {
+  
   let target = event.target;
 
   target.classList.add("open");
   target.classList.add("show");
-  initClock();
+ //to know that i cleard the timer
+  if (timeStatues==true) {
+      initClock();
+      timeStatues=false;
 
+  }
+  
+  
   if (
     target.classList.contains("open") &&
     target.tagName.toLowerCase() == "li"
@@ -63,7 +70,8 @@ deck.addEventListener("click", (event) => {
       console.log(openCards[0].children[0].classList.value);
       if (
         openCards[0].children[0].classList.value ==
-          openCards[1].children[0].classList.value &&
+          openCards[1].children[0].classList.value 
+          &&   //compare th refrences
         openCards[0] !== openCards[1]
       ) {
         moves += 1;
@@ -71,14 +79,15 @@ deck.addEventListener("click", (event) => {
         openCards[1].classList.add("match");
         match++;
         if (match == 2) {
-          alert('YOU WIN ');
+          alert('YOU WIN');
           reset();
+          timeReset();
         }
       } else {
-        openCards[0].classList.remove("open");
-        openCards[0].classList.remove("show");
-        openCards[1].classList.remove("open");
-        openCards[1].classList.remove("show");
+        openCards[0].classList.remove("open","show");
+       // openCards[0].classList.remove("show");
+        openCards[1].classList.remove("open","show");
+       // openCards[1].classList.remove("show");
       }
 
       // remove if reach 2 and remove 2 indexes //
@@ -129,7 +138,7 @@ function reset() {
 
   startNew(itemToShuffle);
 }
-
+//to add the cards after shuffling
 function startNew(arr) {
   let temp = shuffle(arr);
   for (let i = 0; i < temp.length; i++) {
@@ -144,14 +153,17 @@ restart.addEventListener("click", () => {
 
 startNew(itemToShuffle);
 
-//TIMER
+//TIMER 
+
 let time = 0;
-let timerOut = true;
+let timeStatues = true;
+//to make a change on setInt..
 let timerId;
 
 const initClock = () => {
   timerId = setInterval(() => {
-    time++;
+    time=time+1;
+    console.log(time,"time");
     timerCount();
   }, 1000);
 };
@@ -160,18 +172,19 @@ const timerCount = () => {
   const min = Math.floor(time / 60);
   const sec = time % 60;
   if (sec < 10) {
-    timer.innerHTML = `${min}:0${sec}`;
+    timer.innerHTML = `${min}:0${sec}`;  //0:0sec   0:0
   } else {
-    timer.innerHTML = `${min}:${sec}`;
+    timer.innerHTML = `${min}:${sec}`;     
   }
 };
 //===================
 const stopTimer = () => {
   clearInterval(timerId);
 };
-const timeReset = () => {
+ const timeReset = () => {
+  timeStatus = true;
   stopTimer();
-  timerOut = true;
   time = 0;
-  timerCount();
-};
+   timerCount();
+ 
+ };
