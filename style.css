@@ -1,0 +1,178 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 200px;
+    background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(219, 152, 152));
+    background-size: cover;
+    font-family: 'Coda', cursive;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/*
+ Header Style*/
+#header {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    width: 85%;
+    align-items: center;
+  }
+  #header .title {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  #header .title img {
+    max-width: 3em;
+    padding-right: 0.5em;
+  }
+
+
+  /*
+  BTN Part /MOVES
+  */
+
+
+
+.btn{
+  display: inline-block;
+    text-align: center;
+    height: 60px;
+     color: #000;  
+     margin-left: 1em;
+    line-height: 20px;
+    text-align: center;
+    border-radius: 40px;
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.moves{
+  size: 6em;
+}
+/*
+  Deck Cards Style */
+.deck {
+    width: 660px;
+    min-height: 680px;
+    background: linear-gradient(160deg, #da416783 0%, #37315eb7 100%);
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 #49484d
+    ;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
+}
+
+.deck .card {
+    height: 125px;
+    width: 125px;
+    background: #2d3d4b;
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(87, 121, 101, 0.5);
+}
+/* 
+Card Flip/ Show/ Match*/
+.deck .card.open {
+	transform: rotateY(0);
+	background: #02b3e4;
+	cursor: default;
+	animation-name: flipInY;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
+}
+
+.deck .card.show {
+	font-size: 33px;
+}
+
+.deck .card.match {
+	cursor: default;
+	background: #E5F720;
+	font-size: 33px;
+	animation-name: rubberBand;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
+}
+
+.deck .card.unmatched {
+	animation-name: pulse;
+	-webkit-backface-visibility: visible !important;
+	backface-visibility: visible !important;
+	animation-duration: .75s;
+	background: #e2043b;
+}
+
+.deck .card.disabled {
+	pointer-events: none;
+	opacity: 0.9;
+}
+
+
+.flip-card {
+    transform: rotateY(180deg);
+  }
+  .show {
+	visibility: visible !important;
+	opacity: 100 !important;
+}
+
+
+/*
+  Score Panel Styles*/
+
+.score-panel {
+    text-align: left;
+    width: 345px;
+    margin-bottom: 10px;
+}
+
+.score-panel .hearts {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.score-panel .hearts li {
+    list-style: none;
+    display: inline-block;
+}
+
+.score-panel .restart {
+    float: right;
+    cursor: pointer;
+}
